@@ -17,13 +17,13 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-    title: "Wellness Hub - Online Yoga & Wellness Classes",
-    description: "Book yoga classes, manage your wellness journey, and connect with expert instructors.",
-    keywords: ["yoga", "wellness", "health", "fitness", "online classes", "booking"],
-    authors: [{ name: "Wellness Hub" }],
+    title: "Siobhan Sears Yoga - Halifax, NS",
+    description: "Yoga Teacher | Thai Massage Practitioner | Early Childhood Educator.  Join me for mindful movement and authentic wellness in Halifax, Nova Scotia. 🌞",
+    keywords: ["siobhan sears", "yoga halifax", "thai massage", "kids yoga", "yoga teacher halifax", "wellness nova scotia", "halifax yoga", "sun salutation"],
+    authors: [{ name: "Siobhan Sears" }],
     openGraph: {
-        title: "Wellness Hub - Online Yoga & Wellness Classes",
-        description: "Book yoga classes, manage your wellness journey, and connect with expert instructors.",
+        title: "Siobhan Sears Yoga - Halifax, NS",
+        description: "Yoga Teacher | Thai Massage Practitioner. Join me for mindful movement and authentic wellness in beautiful Halifax, Nova Scotia.",
         type: "website",
     },
 };

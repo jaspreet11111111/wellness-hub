@@ -1,13 +1,13 @@
 -- Seed data for development
 
 -- Insert sample class types
-INSERT INTO class_types (name, description, duration, price, difficulty_level, image_url) VALUES
-  ('Hatha Yoga', 'Traditional yoga practice focusing on physical postures and breathing techniques. Perfect for beginners and those seeking a gentle practice.', 60, 20.00, 'beginner', NULL),
-  ('Vinyasa Flow', 'Dynamic flowing yoga sequences that sync breath with movement. Build strength and flexibility.', 75, 25.00, 'intermediate', NULL),
-  ('Yin Yoga', 'Slow-paced practice with poses held for longer periods. Great for deep stretching and relaxation.', 60, 20.00, 'beginner', NULL),
-  ('Power Yoga', 'Intense, fitness-based yoga that builds strength and endurance. Challenging flows for experienced students.', 60, 28.00, 'advanced', NULL),
-  ('Meditation & Breathwork', 'Guided meditation and breathing exercises for relaxation and mental clarity.', 45, 18.00, 'beginner', NULL),
-  ('Private Session', 'One-on-one personalized yoga session tailored to your goals and needs.', 60, 75.00, 'beginner', NULL);
+INSERT INTO class_types (name, description, duration, price, difficulty_level, image_url, instructor) VALUES
+  ('Hatha Yoga', 'Traditional yoga practice focusing on physical postures and breathing techniques. Perfect for beginners and those seeking a gentle practice.', 60, 20.00, 'beginner', NULL, 'Siobhan Sears'),
+  ('Vinyasa Flow', 'Dynamic flowing yoga sequences that sync breath with movement. Build strength and flexibility.', 75, 25.00, 'intermediate', NULL, 'Siobhan Sears'),
+  ('Yin Yoga', 'Slow-paced practice with poses held for longer periods. Great for deep stretching and relaxation.', 60, 20.00, 'beginner', NULL, 'Siobhan Sears'),
+  ('Power Yoga', 'Intense, fitness-based yoga that builds strength and endurance. Challenging flows for experienced students.', 60, 28.00, 'advanced', NULL, 'Siobhan Sears'),
+  ('Kids Yoga', 'Fun, playful yoga designed for children. Build flexibility, focus, and confidence through movement and games.', 45, 18.00, 'beginner', NULL, 'Siobhan Sears'),
+  ('Thai Massage Session', 'Therapeutic Thai massage combining assisted stretching and acupressure. Experience deep relaxation and tension relief.', 60, 75.00, 'beginner', NULL, 'Siobhan Sears');
 
 -- Insert class packages
 INSERT INTO packages (name, credits, price, description) VALUES
