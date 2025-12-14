@@ -192,16 +192,24 @@ export async function getAllClassTypes() {
 
 // ==================== CLASS SESSIONS ====================
 
-export async function createClassSession(formData: FormData) {
+export async function createClassSession(data: {
+    classTypeId: string
+    date: string
+    time: string
+    duration: number
+    maxCapacity: number
+    location?: string
+    instructorOverride?: string
+}) {
     const supabase = createClient()
 
     if (!supabase) {
-        return { error: 'Supabase not configured' }
+        throw new Error('Supabase not configured')
     }
 
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) {
-        return { error: 'Not authenticated' }
+        throw new Error('Not authenticated')
     }
 
     // Check admin status
@@ -212,27 +220,22 @@ export async function createClassSession(formData: FormData) {
         .single()
 
     if (profile?.role !== 'admin') {
-        return { error: 'Unauthorized - Admin access required' }
+        throw new Error('Unauthorized - Admin access required')
     }
 
-    const class_type_id = formData.get('class_type_id') as string
-    const date = formData.get('date') as string
-    const time = formData.get('time') as string
-    const location = formData.get('location') as string
-    const instructor_override = formData.get('instructor_override') as string
-    const max_capacity = parseInt(formData.get('max_capacity') as string)
-
     try {
-        const { data, error } = await supabase
+        const { data: session, error } = await supabase
             .from('class_sessions')
             .insert({
-                class_type_id,
-                date,
-                time,
-                location,
-                instructor_override: instructor_override || null,
-                max_capacity,
-                booked_count: 0
+                class_type_id: data.classTypeId,
+                date: data.date,
+                time: data.time,
+                duration: data.duration,
+                location: data.location || null,
+                instructor_override: data.instructorOverride || null,
+                max_capacity: data.maxCapacity,
+                booked_count: 0,
+                status: 'scheduled'
             })
             .select(`
                 *,
@@ -244,23 +247,31 @@ export async function createClassSession(formData: FormData) {
 
         revalidatePath('/admin/classes')
         revalidatePath('/schedule')
-        return { success: true, data }
+        return session
     } catch (error: any) {
         console.error('Create class session error:', error)
-        return { error: error.message }
+        throw error
     }
 }
 
-export async function updateClassSession(id: string, formData: FormData) {
+export async function updateClassSession(id: string, data: {
+    classTypeId: string
+    date: string
+    time: string
+    duration: number
+    maxCapacity: number
+    location?: string
+    instructorOverride?: string
+}) {
     const supabase = createClient()
 
     if (!supabase) {
-        return { error: 'Supabase not configured' }
+        throw new Error('Supabase not configured')
     }
 
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) {
-        return { error: 'Not authenticated' }
+        throw new Error('Not authenticated')
     }
 
     // Check admin status
@@ -271,26 +282,20 @@ export async function updateClassSession(id: string, formData: FormData) {
         .single()
 
     if (profile?.role !== 'admin') {
-        return { error: 'Unauthorized - Admin access required' }
+        throw new Error('Unauthorized - Admin access required')
     }
 
-    const class_type_id = formData.get('class_type_id') as string
-    const date = formData.get('date') as string
-    const time = formData.get('time') as string
-    const location = formData.get('location') as string
-    const instructor_override = formData.get('instructor_override') as string
-    const max_capacity = parseInt(formData.get('max_capacity') as string)
-
     try {
-        const { data, error } = await supabase
+        const { data: session, error } = await supabase
             .from('class_sessions')
             .update({
-                class_type_id,
-                date,
-                time,
-                location,
-                instructor_override: instructor_override || null,
-                max_capacity
+                class_type_id: data.classTypeId,
+                date: data.date,
+                time: data.time,
+                duration: data.duration,
+                location: data.location || null,
+                instructor_override: data.instructorOverride || null,
+                max_capacity: data.maxCapacity
             })
             .eq('id', id)
             .select(`
@@ -303,10 +308,10 @@ export async function updateClassSession(id: string, formData: FormData) {
 
         revalidatePath('/admin/classes')
         revalidatePath('/schedule')
-        return { success: true, data }
+        return session
     } catch (error: any) {
         console.error('Update class session error:', error)
-        return { error: error.message }
+        throw error
     }
 }
 
@@ -314,12 +319,12 @@ export async function deleteClassSession(id: string) {
     const supabase = createClient()
 
     if (!supabase) {
-        return { error: 'Supabase not configured' }
+        throw new Error('Supabase not configured')
     }
 
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) {
-        return { error: 'Not authenticated' }
+        throw new Error('Not authenticated')
     }
 
     // Check admin status
@@ -330,7 +335,7 @@ export async function deleteClassSession(id: string) {
         .single()
 
     if (profile?.role !== 'admin') {
-        return { error: 'Unauthorized - Admin access required' }
+        throw new Error('Unauthorized - Admin access required')
     }
 
     try {
@@ -343,10 +348,9 @@ export async function deleteClassSession(id: string) {
 
         revalidatePath('/admin/classes')
         revalidatePath('/schedule')
-        return { success: true }
     } catch (error: any) {
         console.error('Delete class session error:', error)
-        return { error: error.message }
+        throw error
     }
 }
 

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { getAllClassTypes, getAllClassSessions } from '@/app/actions/admin-classes'
 import ClassTypesTab from './components/class-types-tab'
-// import ClassSessionsTab from './components/class-sessions-tab'
+import ClassSessionsTab from './components/class-sessions-tab'
 
 export default function AdminClassesContent() {
     const [activeTab, setActiveTab] = useState<'types' | 'sessions'>('types')
@@ -56,8 +56,8 @@ export default function AdminClassesContent() {
                             <button
                                 onClick={() => setActiveTab('types')}
                                 className={`px-6 py-4 font-semibold transition-colors ${activeTab === 'types'
-                                        ? 'text-primary-700 border-b-2 border-primary-700'
-                                        : 'text-neutral-600 hover:text-neutral-900'
+                                    ? 'text-primary-700 border-b-2 border-primary-700'
+                                    : 'text-neutral-600 hover:text-neutral-900'
                                     }`}
                             >
                                 Class Types ({classTypes.length})
@@ -65,8 +65,8 @@ export default function AdminClassesContent() {
                             <button
                                 onClick={() => setActiveTab('sessions')}
                                 className={`px-6 py-4 font-semibold transition-colors ${activeTab === 'sessions'
-                                        ? 'text-primary-700 border-b-2 border-primary-700'
-                                        : 'text-neutral-600 hover:text-neutral-900'
+                                    ? 'text-primary-700 border-b-2 border-primary-700'
+                                    : 'text-neutral-600 hover:text-neutral-900'
                                     }`}
                             >
                                 Scheduled Sessions ({classSessions.length})
@@ -78,14 +78,7 @@ export default function AdminClassesContent() {
                         {activeTab === 'types' ? (
                             <ClassTypesTab classTypes={classTypes} />
                         ) : (
-                            <div className="text-center py-12 text-neutral-500">
-                                <p className="text-lg font-medium mb-2">Session Management Coming Soon</p>
-                                <p className="text-sm">
-                                    You can currently view {classSessions.length} scheduled sessions.
-                                    <br />
-                                    Full session management (add/edit/delete) will be added shortly.
-                                </p>
-                            </div>
+                            <ClassSessionsTab classSessions={classSessions} classTypes={classTypes} />
                         )}
                     </div>
                 </div>
