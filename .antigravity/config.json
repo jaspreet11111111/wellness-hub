@@ -1,0 +1,23 @@
+{
+    "mode": "false",
+    "projectName": "Wellness Hub - Health & Wellness Platform",
+    "projectType": "Full-Stack Web Application",
+    "methodology": "self-annealing-bmad",
+    "version": "1.0",
+    "techStack": {
+        "frontend": "Next.js 14 + TypeScript",
+        "ui": "shadcn/ui + Tailwind CSS",
+        "backend": "Supabase",
+        "payments": "Stripe",
+        "deployment": "Vercel"
+    },
+    "phases": {
+        "analyst": "pending",
+        "pm": "pending",
+        "ux": "pending",
+        "architect": "pending",
+        "sm": "pending",
+        "dev": "pending",
+        "qa": "pending"
+    }
+}

@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 42 20% 98%;
+        --foreground: 30 10% 15%;
+
+        --card: 42 20% 98%;
+        --card-foreground: 30 10% 15%;
+
+        --popover: 0 0% 100%;
+        --popover-foreground: 30 10% 15%;
+
+        --primary: 100 15% 58%;
+        --primary-foreground: 100 15% 98%;
+
+        --secondary: 30 40% 65%;
+        --secondary-foreground: 30 40% 10%;
+
+        --muted: 42 20% 93%;
+        --muted-foreground: 30 10% 45%;
+
+        --accent: 270 20% 80%;
+        --accent-foreground: 270 20% 15%;
+
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 30 10% 90%;
+        --input: 30 10% 90%;
+        --ring: 100 15% 58%;
+
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        --background: 30 10% 10%;
+        --foreground: 42 20% 98%;
+
+        --card: 30 10% 10%;
+        --card-foreground: 42 20% 98%;
+
+        --popover: 30 10% 5%;
+        --popover-foreground: 42 20% 98%;
+
+        --primary: 100 15% 58%;
+        --primary-foreground: 100 15% 10%;
+
+        --secondary: 30 40% 25%;
+        --secondary-foreground: 30 40% 98%;
+
+        --muted: 30 10% 20%;
+        --muted-foreground: 42 20% 60%;
+
+        --accent: 270 20% 35%;
+        --accent-foreground: 270 20% 98%;
+
+        --destructive: 0 62% 50%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 30 10% 20%;
+        --input: 30 10% 20%;
+        --ring: 100 15% 58%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+}
+
+@layer utilities {
+    .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    }
+
+    .glass-dark {
+        background: rgba(42, 40, 36, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
