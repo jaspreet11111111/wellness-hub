@@ -6,15 +6,11 @@ export default function AboutSection() {
                     {/* Image Side */}
                     <div className="relative">
                         <div className="aspect-[4/5] bg-gradient-to-br from-primary-300 to-secondary-500 rounded-3xl overflow-hidden">
-                            {/* Placeholder for instructor photo */}
-                            <div className="w-full h-full flex items-center justify-center">
-                                <div className="text-center text-white/90">
-                                    <svg className="w-32 h-32 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                    </svg>
-                                    <p className="text-lg font-medium">Instructor Photo</p>
-                                </div>
-                            </div>
+                            <img
+                                src="/images/instructor/profile.png"
+                                alt="Siobhan Sears - Yoga Instructor"
+                                className="w-full h-full object-cover"
+                            />
                         </div>
 
                         {/* Decorative element */}
