@@ -7,7 +7,7 @@ export default function AboutSection() {
                     <div className="relative">
                         <div className="aspect-[4/5] bg-gradient-to-br from-primary-300 to-secondary-500 rounded-3xl overflow-hidden">
                             <img
-                                src="/images/instructor/profile.png"
+                                src="/images/instructor/profile.jpg"
                                 alt="Siobhan Sears - Yoga Instructor"
                                 className="w-full h-full object-cover"
                             />
